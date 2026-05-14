@@ -557,7 +557,7 @@ footer {
     }
 
     .hamburger {
-        margin-left: 50px;
+        margin-left: auto;
         display: flex;
     }
 }
