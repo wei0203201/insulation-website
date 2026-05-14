@@ -207,6 +207,14 @@
                         <p>Established 20XX</p>
                     </div>
                 </div>
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <img src="images/logo.png" alt="Project 2">
+                    <div class="project-info">
+                        <h3>Coming Soon</h3>
+                        <p>Established 20XX</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -330,6 +338,25 @@
         }
     });
 
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const overlay = document.getElementById("menu-overlay");
+
+    function toggleMenu() {
+        hamburger.classList.toggle("active");
+        mobileMenu.classList.toggle("active");
+        overlay.classList.toggle("active");
+    }
+
+    hamburger.addEventListener("click", toggleMenu);
+
+    // Click overlay (left side / outside menu) closes menu
+    overlay.addEventListener("click", () => {
+        hamburger.classList.remove("active");
+        mobileMenu.classList.remove("active");
+        overlay.classList.remove("active");
+    });
+
     // Mobile menu toggle
     const menuBtn = document.getElementById("menu-btn");
 
@@ -340,8 +367,11 @@
     }
 
     function fillProjects() {
+        // ❌ disable on mobile
+        if (window.innerWidth <= 768) return;
+
         const grid = document.querySelector('.projects-grid');
-        const cards = document.querySelectorAll('.project-card:not(.empty)');
+        const cards = document.querySelectorAll('.project-card');
 
         const perRow = 4;
         const remainder = cards.length % perRow;
@@ -350,17 +380,16 @@
             const fillCount = perRow - remainder;
 
             for (let i = 0; i < fillCount; i++) {
-
                 const div = document.createElement('div');
                 div.classList.add('project-card');
 
                 div.innerHTML = `
-                <img src="images/logo.png" alt="Coming Soon">
-                <div class="project-info">
-                    <h3>Coming Soon</h3>
-                    <p></p>
-                </div>
-            `;
+                    <img src="images/logo.png" alt="Coming Soon">
+                    <div class="project-info">
+                        <h3>Coming Soon</h3>
+                        <p></p>
+                    </div>
+                `;
 
                 grid.appendChild(div);
             }

@@ -431,21 +431,9 @@ footer {
 }
 
 .projects-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-}
-
-/* filler card style */
-.project-card.empty {
-    background: #111827;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 300px;
-    border-radius: 15px;
-    opacity: 0.6;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
 }
 
 .project-card.empty h3 {
@@ -455,12 +443,14 @@ footer {
 
 /* Card */
 .project-card {
-    background: white;
-    border-radius: 15px;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    transition: 0.3s ease;
-    width: calc(25% - 19px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
@@ -549,10 +539,25 @@ footer {
     .vm-image img {
         height: 400px;
     }
-}
 
-@media (max-width: 600px) {
     .projects-grid {
         grid-template-columns: 1fr;
+    }
+
+    .logo {
+        white-space: nowrap;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 40px; /* space between logo and menu */
+        padding-left: 20px; /* push everything slightly from edge */
+    }
+
+    .hamburger {
+        margin-left: 50px;
+        display: flex;
     }
 }
